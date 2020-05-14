@@ -44,4 +44,11 @@ class ControllerTest {
 		assertNotNull(testSurvey);
 		assertTrue(testSurvey instanceof Survey);
 	}
+	
+	@Test
+	public void testCreateSurveyResponse() {
+		controller.createSurvey("Test survey");
+		controller.chooseSurvey("Test survey");
+		controller.getSurveyQuestions();
+	}
 }

@@ -15,6 +15,7 @@ public class Controller {
 		else {
 			Survey survey = new Survey(name);
 			this.surveyList.add(survey);
+			this.currentSurvey=survey;
 			return survey;
 		}
 		
@@ -36,6 +37,10 @@ public class Controller {
 
 	public ArrayList<Survey> ListSurveys() {
 		return this.surveyList;
+	}
+
+	public ArrayList<Question> getSurveyQuestions() {
+		
 	}
 
 }
