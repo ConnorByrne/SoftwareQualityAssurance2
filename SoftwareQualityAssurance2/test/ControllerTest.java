@@ -14,4 +14,9 @@ class ControllerTest {
 		assertEquals("first survey",this.controller.createSurvey("first survey").getName());
 	}
 	
+	@Test
+	public void testCreateQuestion() {
+		assertEquals("Test question",this.controller.addQuestion("Test question"));
+	}
+	
 }
