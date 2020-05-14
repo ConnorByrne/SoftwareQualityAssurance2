@@ -32,4 +32,12 @@ class ControllerTest {
 		}
 		
 	}
+	
+	@Test
+	public void testGetSurveyByName() {
+		controller.createSurvey("Test survey");
+		Survey testSurvey = controller.chooseSurvey("Test survey");
+		assertNotNull(testSurvey);
+		assertTrue(testSurvey instanceof Survey);
+	}
 }
