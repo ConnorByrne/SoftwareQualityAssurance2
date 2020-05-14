@@ -28,4 +28,8 @@ public class Controller {
 		return this.currentSurvey;
 	}
 
+	public ArrayList<Survey> ListSurveys() {
+		return this.surveyList;
+	}
+
 }
