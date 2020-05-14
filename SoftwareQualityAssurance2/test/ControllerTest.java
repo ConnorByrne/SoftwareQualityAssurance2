@@ -12,8 +12,12 @@ class ControllerTest {
 	
 	@Test
 	public void testCreateSurvey() {
-		
-		assertEquals("first survey",this.controller.createSurvey("first survey").getName());
+		//tests that survey is created
+		Survey testSurvey = this.controller.createSurvey("first survey");
+		assertNotNull(testSurvey);
+		//tests that same survey is not created twice
+		assertEquals(testSurvey,this.controller.createSurvey("first survey"));
+		//assertEquals("first survey",this.controller.createSurvey("first survey").getName());
 	}
 	
 	@Test

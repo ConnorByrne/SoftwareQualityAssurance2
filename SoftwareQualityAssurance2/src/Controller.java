@@ -9,9 +9,15 @@ public class Controller {
 	}
 	
 	public Survey createSurvey(String name) {
-		Survey survey = new Survey(name);
-		this.surveyList.add(survey);
-		return survey;
+		if(this.surveyList.contains(this.chooseSurvey(name))) {
+			return chooseSurvey(name);
+		}
+		else {
+			Survey survey = new Survey(name);
+			this.surveyList.add(survey);
+			return survey;
+		}
+		
 	}
 
 	public String addQuestion(String questionText) {
