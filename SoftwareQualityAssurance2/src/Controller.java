@@ -32,13 +32,19 @@ public class Controller {
 		return this.currentSurvey.getQuestionList();
 	}
 
-	public void addAnswer(Question question, int answer) {
-		int index=this.currentSurvey.getQuestionList().indexOf(question);
-		this.currentSurvey.getQuestionList().get(index).addAnswer(answer);
+	public void addAnswer(Question question, int answer) throws InvalidAnswerException {
+		if(answer>0 && answer<6) {
+			int index=this.currentSurvey.getQuestionList().indexOf(question);
+			this.currentSurvey.getQuestionList().get(index).addAnswer(answer);
+		}
+		else {
+			throw new InvalidAnswerException(answer);
+		}
 	}
 	
 	public Survey getCurrenSurvey() {
 		return this.currentSurvey;
 	}
+	
 
 }

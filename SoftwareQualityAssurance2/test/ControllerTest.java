@@ -1,7 +1,11 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+
 
 class ControllerTest {
 	
@@ -20,7 +24,7 @@ class ControllerTest {
 	}
 	
 	@Test
-	public void testCreateSurveyResponse() {
+	public void testCreateSurveyResponse() throws InvalidAnswerException {
 		this.controller.createSurvey("Test survey");
 		this.controller.chooseSurvey("Test survey");
 		this.controller.addQuestion("Give Test Answer");
@@ -35,4 +39,18 @@ class ControllerTest {
 		assertEquals(3, answerList.get(0));
 	}
 	
+	@Test
+	public void testInvalidAnswer() throws InvalidAnswerException{
+		this.controller.createSurvey("Test survey");
+		this.controller.chooseSurvey("Test survey");
+		this.controller.addQuestion("Give Test Answer");
+		assertTrue(this.controller.getSurveyQuestions() instanceof ArrayList<?>);
+		assertTrue(this.controller.getSurveyQuestions().get(0) instanceof Question);
+		ArrayList<Question> questions=this.controller.getSurveyQuestions();
+		Question question = questions.get(0);
+		Assertions.assertThrows(InvalidAnswerException.class, () ->{
+			this.controller.addAnswer(question,10);
+		});
+		
+	}
 }
