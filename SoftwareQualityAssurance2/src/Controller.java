@@ -45,6 +45,14 @@ public class Controller {
 	public Survey getCurrenSurvey() {
 		return this.currentSurvey;
 	}
+
+	public ArrayList<Integer> getAllAnswers() {
+		ArrayList<Integer> answers=new ArrayList<Integer>();
+		for(Question question:this.currentSurvey.getQuestionList()) {
+			answers.addAll(question.getAnswers());
+		}
+		return answers;
+	}
 	
 
 }
