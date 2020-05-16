@@ -28,4 +28,17 @@ public class Controller {
 		return this.currentSurvey;
 	}
 
+	public ArrayList<Question> getSurveyQuestions() {
+		return this.currentSurvey.getQuestionList();
+	}
+
+	public void addAnswer(Question question, int answer) {
+		int index=this.currentSurvey.getQuestionList().indexOf(question);
+		this.currentSurvey.getQuestionList().get(index).addAnswer(answer);
+	}
+	
+	public Survey getCurrenSurvey() {
+		return this.currentSurvey;
+	}
+
 }

@@ -20,6 +20,20 @@ public class Survey {
 		questionList.add(question);
 		return question.getQuestionText();
 	}
+
+	public ArrayList<Question> getQuestionList() {
+		return questionList;
+	}
+
+	public void setQuestionList(ArrayList<Question> questionList) {
+		this.questionList = questionList;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 	
 
 }
