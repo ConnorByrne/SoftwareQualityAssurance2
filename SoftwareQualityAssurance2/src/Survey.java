@@ -60,6 +60,30 @@ public class Survey {
 		stdDev=Math.sqrt(squaredDifferences);
 		return stdDev;
 	}
+
+	public int getMax() {
+		int max = 0;
+		for(Question question: this.questionList) {
+			for(Integer answer: question.getAnswers()) {
+				if(answer>max) {
+					max=answer;
+				}
+			}
+		}
+		return max;
+	}
+
+	public int getMin() {
+		int min = 6;
+		for(Question question: this.questionList) {
+			for(Integer answer: question.getAnswers()) {
+				if(answer<min) {
+					min=answer;
+				}
+			}
+		}
+		return min;
+	}
 	
 	
 	

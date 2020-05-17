@@ -135,5 +135,13 @@ public ArrayList<Question> getSurveyQuestions() {
 		return this.currentSurvey.getStandardDev();
 	}
 
+	public int getSurveyMax() {
+		return this.currentSurvey.getMax();
+	}
+
+	public int getSurveyMin() {
+		return this.currentSurvey.getMin();
+	}
+
 	
 }
