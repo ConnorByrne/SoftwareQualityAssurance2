@@ -128,12 +128,11 @@ public ArrayList<Question> getSurveyQuestions() {
 	}
 
 	public double getSurveyAverage() {
-		double average = 0.0;
-		for(Question question : this.currentSurvey.getQuestionList()) {
-			average+=question.getQuestionAverage();
-		}
-		average=average/this.currentSurvey.getQuestionList().size();
-		return average;
+		return this.currentSurvey.getAverage();
+	}
+
+	public double getSurveyStandardDev() {
+		return this.currentSurvey.getStandardDev();
 	}
 
 	

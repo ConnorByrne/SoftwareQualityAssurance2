@@ -39,15 +39,7 @@ public class Question {
 	}
 
 	public double getStandardDev() {
-//		double powerSum1=0;
-//		double powerSum2=0;
 		double stdev=0;
-//		
-//		for(int i=0;i<this.answers.size();i++) {
-//			powerSum1+=answers.get(i);
-//			powerSum2+=Math.pow(answers.get(i), 2);
-//			stdev=Math.sqrt(i*powerSum2 - Math.pow(powerSum1, 2))/i;
-//		}
 		double mean=this.getQuestionAverage();
 		ArrayList<Double> dubs = new ArrayList<Double>();
 		for(Integer answer : this.answers) {
