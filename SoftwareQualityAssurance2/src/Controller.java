@@ -9,9 +9,16 @@ public class Controller {
 	}
 	
 	public Survey createSurvey(String name) {
-		Survey survey = new Survey(name);
-		this.surveyList.add(survey);
-		return survey;
+		if(this.surveyList.contains(this.chooseSurvey(name))) {
+			return chooseSurvey(name);
+		}
+		else {
+			Survey survey = new Survey(name);
+			this.surveyList.add(survey);
+			this.currentSurvey=survey;
+			return survey;
+		}
+		
 	}
 
 	public String addQuestion(String questionText) {
@@ -27,8 +34,12 @@ public class Controller {
 		}
 		return this.currentSurvey;
 	}
+public ArrayList<Survey> ListSurveys() {
+		return this.surveyList;
+	}
 
-	public ArrayList<Question> getSurveyQuestions() {
+	
+public ArrayList<Question> getSurveyQuestions() {
 		return this.currentSurvey.getQuestionList();
 	}
 
@@ -115,6 +126,22 @@ public class Controller {
 		}
 		return 0;
 	}
-	
 
+	public double getSurveyAverage() {
+		return this.currentSurvey.getAverage();
+	}
+
+	public double getSurveyStandardDev() {
+		return this.currentSurvey.getStandardDev();
+	}
+
+	public int getSurveyMax() {
+		return this.currentSurvey.getMax();
+	}
+
+	public int getSurveyMin() {
+		return this.currentSurvey.getMin();
+	}
+
+	
 }
