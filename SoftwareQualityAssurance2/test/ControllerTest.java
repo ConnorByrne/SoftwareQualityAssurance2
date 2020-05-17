@@ -137,4 +137,36 @@ class ControllerTest {
 		assertNotEquals(0.0, average2);
 		assertEquals(4, average2);
 	}
+	
+	@Test
+	public void testQuestionStandardDev() throws InvalidAnswerException {
+		this.controller.createSurvey("Test survey");
+		this.controller.chooseSurvey("Test survey");
+		this.controller.addQuestion("Test Question 1");
+		assertTrue(this.controller.getQuestion("Test Question 1") instanceof Question);
+		Question question = this.controller.getQuestion("Test Question 1");
+		assertNotNull(question);
+		this.controller.addAnswer(question,3);
+		this.controller.addAnswer(question,4);
+		this.controller.addAnswer(question,1);
+		this.controller.addAnswer(question,3);
+		this.controller.addAnswer(question,2);
+		this.controller.addAnswer(question,5);
+		this.controller.addAnswer(question,2);
+		double stdDev = this.controller.getQuestionStandardDev(question);
+		assertNotEquals(0.0, stdDev);
+		assertEquals(1.2453996981544782, stdDev);
+		this.controller.addQuestion("Test question 2");
+		Question question2 = this.controller.getQuestion("Test Question 2");
+		this.controller.addAnswer(question2,1);
+		this.controller.addAnswer(question2,2);
+		this.controller.addAnswer(question2,3);
+		this.controller.addAnswer(question2,4);
+		this.controller.addAnswer(question2,5);
+		this.controller.addAnswer(question2,2);
+		this.controller.addAnswer(question2,4);
+		double stdDev2 = this.controller.getQuestionStandardDev(question2);
+		assertNotEquals(0.0, stdDev2);
+		assertEquals(1.3093073414159542, stdDev2);
+	}
 }

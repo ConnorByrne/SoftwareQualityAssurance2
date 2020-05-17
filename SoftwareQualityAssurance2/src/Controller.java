@@ -77,5 +77,18 @@ public class Controller {
 		return question.getQuestionAverage();
 	}
 	
+	public double getQuestionStandardDev(String questionText) {
+		for(Question question : this.currentSurvey.getQuestionList()) {
+			if(question.getQuestionText().equalsIgnoreCase(questionText)) {
+				return getQuestionStandardDev(question);
+			}
+		}
+		return 0.0;
+	}
+
+	public double getQuestionStandardDev(Question question) {
+		return question.getStandardDev();
+	}
+	
 
 }

@@ -38,4 +38,29 @@ public class Question {
 		return average;
 	}
 
+	public double getStandardDev() {
+//		double powerSum1=0;
+//		double powerSum2=0;
+		double stdev=0;
+//		
+//		for(int i=0;i<this.answers.size();i++) {
+//			powerSum1+=answers.get(i);
+//			powerSum2+=Math.pow(answers.get(i), 2);
+//			stdev=Math.sqrt(i*powerSum2 - Math.pow(powerSum1, 2))/i;
+//		}
+		double mean=this.getQuestionAverage();
+		ArrayList<Double> dubs = new ArrayList<Double>();
+		for(Integer answer : this.answers) {
+			double d = Math.pow((answer-mean),2);
+			dubs.add(d);
+		}
+		double squaredDifferences=0;
+		for(Double difference: dubs) {
+			squaredDifferences+=difference;
+		}
+		squaredDifferences=squaredDifferences/dubs.size();
+		stdev=Math.sqrt(squaredDifferences);
+		return stdev;
+	}
+
 }
