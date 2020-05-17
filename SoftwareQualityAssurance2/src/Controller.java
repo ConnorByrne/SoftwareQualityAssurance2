@@ -126,4 +126,15 @@ public ArrayList<Question> getSurveyQuestions() {
 		}
 		return 0;
 	}
+
+	public double getSurveyAverage() {
+		double average = 0.0;
+		for(Question question : this.currentSurvey.getQuestionList()) {
+			average+=question.getQuestionAverage();
+		}
+		average=average/this.currentSurvey.getQuestionList().size();
+		return average;
+	}
+
+	
 }

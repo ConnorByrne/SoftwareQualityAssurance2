@@ -126,8 +126,57 @@ class ControllerTest {
 		assertEquals(5, answerList.get(5));
 		assertEquals(3, answerList.get(10));
 	}
+      @Test
+      public void testGetAverageResponseSurvey() throws InvalidAnswerException {
+  		this.controller.createSurvey("Test survey");
+  		this.controller.chooseSurvey("Test survey");
+  		this.controller.addQuestion("Test Question 1");
+  		this.controller.addQuestion("Test Question 2");
+  		this.controller.addQuestion("Test Question 3");
+  		this.controller.addQuestion("Test Question 4");
+  		assertTrue(this.controller.getSurveyQuestions() instanceof ArrayList<?>);
+  		assertTrue(this.controller.getSurveyQuestions().get(0) instanceof Question);
+  		ArrayList<Question> questions=this.controller.getSurveyQuestions();
+  		Question question = questions.get(0);
+  		this.controller.addAnswer(question,3);
+  		this.controller.addAnswer(question,4);
+  		this.controller.addAnswer(question,1);
+  		this.controller.addAnswer(question,3);
+  		this.controller.addAnswer(question,2);
+  		this.controller.addAnswer(question,5);
+  		this.controller.addAnswer(question,2);
+  		Question question2 = questions.get(1);
+  		this.controller.addAnswer(question2,5);
+  		this.controller.addAnswer(question2,5);
+  		this.controller.addAnswer(question2,5);
+  		this.controller.addAnswer(question2,5);
+  		this.controller.addAnswer(question2,5);
+  		this.controller.addAnswer(question2,5);
+  		this.controller.addAnswer(question2,5);
+  		Question question3 = questions.get(2);
+  		this.controller.addAnswer(question3,2);
+  		this.controller.addAnswer(question3,4);
+  		this.controller.addAnswer(question3,1);
+  		this.controller.addAnswer(question3,4);
+  		this.controller.addAnswer(question3,1);
+  		this.controller.addAnswer(question3,5);
+  		this.controller.addAnswer(question3,4);
+  		Question question4 = questions.get(3);
+  		this.controller.addAnswer(question4,3);
+  		this.controller.addAnswer(question4,1);
+  		this.controller.addAnswer(question4,3);
+  		this.controller.addAnswer(question4,4);
+  		this.controller.addAnswer(question4,2);
+  		this.controller.addAnswer(question4,4);
+  		this.controller.addAnswer(question4,5);
+  		double average=this.controller.getSurveyAverage();
+		assertNotEquals(0.0, average);
+		assertEquals(3.5, average);
+  	
+      }
+      
    
-  @Test
+      @Test
 	public void testGetQuestionAverage() throws InvalidAnswerException {
 		this.controller.createSurvey("Test survey");
 		this.controller.chooseSurvey("Test survey");
