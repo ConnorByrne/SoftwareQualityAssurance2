@@ -53,6 +53,29 @@ public class Controller {
 		}
 		return answers;
 	}
+
+	public Question getQuestion(String questionText) {
+		for(Question question : this.currentSurvey.getQuestionList()) {
+			if(question.getQuestionText().equalsIgnoreCase(questionText)) {
+				return question;
+			}
+		}
+		return null;
+	}
+
+	public double getQuestionAverage(String questionText) {
+		for(Question question : this.currentSurvey.getQuestionList()) {
+			if(question.getQuestionText().equalsIgnoreCase(questionText)) {
+				return getQuestionAverage(question);
+			}
+		}
+		return 0.0;
+		
+	}
+	
+	public double getQuestionAverage(Question question) {
+		return question.getQuestionAverage();
+	}
 	
 
 }

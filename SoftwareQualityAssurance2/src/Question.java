@@ -29,4 +29,13 @@ public class Question {
 		this.answers.add(answer);
 	}
 
+	public double getQuestionAverage() {
+		double average=0.0;
+		for(Integer answer : answers) {
+			average=average+answer;
+		}
+		average=average/answers.size();
+		return average;
+	}
+
 }

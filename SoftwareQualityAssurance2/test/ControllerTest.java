@@ -1,3 +1,4 @@
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -103,5 +104,37 @@ class ControllerTest {
 		assertEquals(3, answerList.get(0));
 		assertEquals(5, answerList.get(5));
 		assertEquals(3, answerList.get(10));
+	}
+	
+	@Test
+	public void testGetQuestionAverage() throws InvalidAnswerException {
+		this.controller.createSurvey("Test survey");
+		this.controller.chooseSurvey("Test survey");
+		this.controller.addQuestion("Test Question 1");
+		assertTrue(this.controller.getQuestion("Test Question 1") instanceof Question);
+		Question question = this.controller.getQuestion("Test Question 1");
+		assertNotNull(question);
+		this.controller.addAnswer(question,3);
+		this.controller.addAnswer(question,4);
+		this.controller.addAnswer(question,1);
+		this.controller.addAnswer(question,3);
+		this.controller.addAnswer(question,2);
+		this.controller.addAnswer(question,5);
+		this.controller.addAnswer(question,2);
+		double average=this.controller.getQuestionAverage("Test Question 1");
+		assertNotEquals(0.0, average);
+		assertEquals(2.857142857142857, average);
+		this.controller.addQuestion("Test question 2");
+		Question question2 = this.controller.getQuestion("Test Question 2");
+		this.controller.addAnswer(question2,4);
+		this.controller.addAnswer(question2,4);
+		this.controller.addAnswer(question2,4);
+		this.controller.addAnswer(question2,4);
+		this.controller.addAnswer(question2,4);
+		this.controller.addAnswer(question2,4);
+		this.controller.addAnswer(question2,4);
+		double average2=this.controller.getQuestionAverage("Test Question 2");
+		assertNotEquals(0.0, average2);
+		assertEquals(4, average2);
 	}
 }
