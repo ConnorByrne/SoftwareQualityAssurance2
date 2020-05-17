@@ -102,6 +102,19 @@ public class Controller {
 		}
 		return 0;
 	}
+
+	public int getQuestionMinScore(Question question) {
+		return question.getMinScore();
+	}
+	
+	public int getQuestionMinSxore(String questionText) {
+		for(Question question : this.currentSurvey.getQuestionList()) {
+			if(question.getQuestionText().equalsIgnoreCase(questionText)) {
+				return getQuestionMinScore(question);
+			}
+		}
+		return 0;
+	}
 	
 
 }

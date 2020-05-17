@@ -202,4 +202,39 @@ class ControllerTest {
 		assertEquals(3, maxScore2);
 		
 	}
+	
+	@Test
+	public void testGetMinScoreQuestion() throws InvalidAnswerException {
+		this.controller.createSurvey("Test survey");
+		this.controller.chooseSurvey("Test survey");
+		this.controller.addQuestion("Test Question 1");
+		assertTrue(this.controller.getQuestion("Test Question 1") instanceof Question);
+		Question question = this.controller.getQuestion("Test Question 1");
+		assertNotNull(question);
+		this.controller.addAnswer(question,3);
+		this.controller.addAnswer(question,4);
+		this.controller.addAnswer(question,1);
+		this.controller.addAnswer(question,3);
+		this.controller.addAnswer(question,2);
+		this.controller.addAnswer(question,5);
+		this.controller.addAnswer(question,2);
+		int minScore = this.controller.getQuestionMinScore(question);
+		assertNotEquals(0, minScore);
+		assertEquals(1, minScore);
+		this.controller.addQuestion("Test question 2");
+		Question question2 = this.controller.getQuestion("Test Question 2");
+		this.controller.addAnswer(question2,5);
+		this.controller.addAnswer(question2,4);
+		this.controller.addAnswer(question2,5);
+		this.controller.addAnswer(question2,4);
+		this.controller.addAnswer(question2,5);
+		this.controller.addAnswer(question2,4);
+		this.controller.addAnswer(question2,4);
+		int minScore2 = this.controller.getQuestionMinScore(question2);
+		assertNotEquals(0, minScore2);
+		assertEquals(4, minScore2);
+		
+	}
+	
+	
 }

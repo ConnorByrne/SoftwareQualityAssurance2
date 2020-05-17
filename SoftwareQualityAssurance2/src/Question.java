@@ -73,4 +73,14 @@ public class Question {
 		return maxScore;
 	}
 
+	public int getMinScore() {
+		int minScore=6;
+		for(Integer answer: answers) {
+			if(answer<minScore) {
+				minScore=answer;
+			}
+		}
+		return minScore;
+	}
+
 }
