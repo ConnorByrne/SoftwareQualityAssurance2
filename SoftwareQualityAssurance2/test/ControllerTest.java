@@ -38,6 +38,7 @@ class ControllerTest {
 		}catch(Exception e) {
 			fail("got Exception, i want ArrayList<Survey>");
 		}
+	}
      
     @Test  
     public void testCreateSurveyResponse() throws InvalidAnswerException {

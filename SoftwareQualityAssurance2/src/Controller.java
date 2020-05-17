@@ -38,9 +38,7 @@ public ArrayList<Survey> ListSurveys() {
 		return this.surveyList;
 	}
 
-	public ArrayList<Question> getSurveyQuestions() {
-		
-	}
+	
 public ArrayList<Question> getSurveyQuestions() {
 		return this.currentSurvey.getQuestionList();
 	}
