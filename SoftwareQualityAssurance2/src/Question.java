@@ -63,4 +63,14 @@ public class Question {
 		return stdev;
 	}
 
+	public int getMaxScore() {
+		int maxScore=0;
+		for(Integer answer: answers) {
+			if(answer>maxScore) {
+				maxScore=answer;
+			}
+		}
+		return maxScore;
+	}
+
 }

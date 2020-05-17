@@ -89,6 +89,19 @@ public class Controller {
 	public double getQuestionStandardDev(Question question) {
 		return question.getStandardDev();
 	}
+
+	public int getQuestionMaxScore(Question question) {
+		return question.getMaxScore();
+	}
+	
+	public int getQuestionMaxSxore(String questionText) {
+		for(Question question : this.currentSurvey.getQuestionList()) {
+			if(question.getQuestionText().equalsIgnoreCase(questionText)) {
+				return getQuestionMaxScore(question);
+			}
+		}
+		return 0;
+	}
 	
 
 }
